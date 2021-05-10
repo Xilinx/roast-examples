@@ -1,0 +1,42 @@
+============================================= Minimum System Requirement of machine ===============================================
+
+	|=======================================================================================================================|
+	|				|Requirement										|
+	|				|Development										|
+	|				|(Build Machine OS)									|
+	|	Componenet		|											|
+	|-------------------------------|---------------------------------------------------------------------------------------|
+	|Operating System		|Linux, 64-bit:										|
+	|				|	* RHEL/CentOS 7.4, 7.5, 7.6, 7.7, 7.8, 8.1, 8.2					|
+	|				|	* Ubuntu 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4, 20.04 LTS	|
+	|				|	* Note: Additional library installation required.				|
+	|				|	* Amazon Linux 2 AL2 LTS							|
+	|				| 	* SUSE Enterprise Linux 12.4							|
+	|				|Windows 10 64-bit Professional and Enterprise verson 1809, 1903, 1909, and 2004	|
+	|-------------------------------|---------------------------------------------------------------------------------------|
+	|System Memory			|32 GB (64 GB is recommended)								|
+	|-------------------------------|---------------------------------------------------------------------------------------|
+	|Internet Connection		|Required for downloading drivers and utilities.					|
+	|-------------------------------|---------------------------------------------------------------------------------------|
+	|Hard disk Space		|100 GB											|
+	|=======================================================================================================================|
+
+
+===========================Install Xilinx Vitis - 2020.2 (SW Developer)[For Linux machine]===========================
+
+--> For downloading Xilinx Vitis Embedded Platforms refered the following link:
+	-> https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html
+
+        -> Here you can download xilinx_vitis_2020.2 all os installer (tar/gzip) file that size approx 43gb . 
+        -> After file downloaded, you can extract in specific folder. 
+        -> Open the terminal in the same folder and run ./xsetup command 
+        -> It will opens the Welcome page of the Xilinx Unified 2020.2 Installer.
+        -> Click Next to open the Select Install Type page of the Installer.
+        -> Then select vitis, click next 
+	-> Then you need to check all the checkbox and click next 
+	-> You need to check all checkbox for accept the Agreement ,click next 
+	-> If it show disk size not fullfill then make a folder at /home/<user>/tools/xilinx ,click install 
+	-> now installation will start and wait till it is successfully done.
+
+--> Reference :- https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/vitis_embedded_installation.html
+

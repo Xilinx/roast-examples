@@ -1,0 +1,72 @@
+============================================= Minimum System Requirement of machine ===============================================
+
+--> Minimum workstation requirements:
+	○ 8 GB RAM (recommended minimum for Xilinx® tools)
+	○ 2 GHz CPU clock or equivalent (minimum of eight cores)
+	○ 100 GB free HDD space
+	○ Supported OS:
+		- Red Hat Enterprise Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)
+		- CentOS Workstation/Server 7.4, 7.5, 7.6, 7.7, 7.8 (64-bit)	
+		- Ubuntu Linux Workstation/Server 16.04.5, 16.04.6, 18.04.1, 18.04.2, 18.04.3, 18.04.4(64-bit)
+
+=============================================Install Xilinx PetaLinux - 2020.2 [For Linux Machine]================================================
+
+--> For downloading Petalinux refered the following link:
+	-> https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html
+	-> From the link, download PetaLinux Tools-Installer-2020.2 (TAR/GZIP-1.85GB) (Maybe version is Changed due to new release)
+
+--> For installation:
+	-> To install PetaLinux tools under '/home/<user>/petalinux/<petalinux-version>'.
+	-> PetaLinux tools require that your host system /bin/sh is 'bash'. If you are using Ubuntu distribution and your /bin/sh is 'dash', 		   consult your system administrator to change your default system shell /bin/sh with the sudo dpkg-reconfigure dash command.
+	-> Copy downloaded file 'petalinux-v<petaliux-version>-final-installer.run' to path :- '/home/<user>/petalinux/<petalinux-version>'.
+	-> Run command :- ./petalinux-v<petalinux-version>-final-installer.run --dir /home/<user>/petalinux/<petalinux-version>
+	-> If you face the error regarding packages and library is not present then you need to install package and libraries 
+	   from the reference link you can find one excel sheet where list of packages are there for different OS also.
+
+		-> Reference :- https://www.xilinx.com/Attachment/2020.2_PetaLinux_Package_List.xlsx (download excel file)
+
+	-> If command will successfully run, you get PetaLinux End User License Agreement (EULA). then you have to press enter to view agreement.
+	-> Then read agreement carefully and for accepting the agreement press: 'q' and press: 'y' for accept the agreement.
+	-> Next agreement is webtalk. Read carefully and follow the same procedure for accepting agreement. (press: 'q' and press: 'y')
+	-> After that next is Third party End User Agreement. Read carefully and follow the same procedure for accepting agreement.
+	-> Then installation will start and for that you need to press: 'y' for starting petalinux installation.
+
+--> PetaLinux working environment setup:-
+	-> For Bash user login shell:
+		$source <path-to-installed-PetaLinux>/settings.sh
+
+	-> For C shell as user login shell:
+		$source <path-to-installed-PetaLinux>/settings.csh
+
+	-> Verify that the working environment has been set:
+		$echo $PETALINUX
+		Example O/P: /home/<user>/<path-to-installed-petalinux>
+
+--> For turning ON webtalk: $petalinux-util --webtalk on
+	O/P: INFO: Turn on webtalk feature!
+
+--> Now PetaLinx is set to work!!
+
+
+--------------------------------------------------------------------------------------------
+Petalinux depends packages required to be install for building petalinux build test cases: -
+--------------------------------------------------------------------------------------------
+
+-> This is xilinx-petalinux download page link where you find packages for petalinux.
+
+Download link:- https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2020-2.html
+
+-> Zynq UltraScale+ MPSoC Board Support Packages - <version>
+        -> Download:- ZCU106 BSP (BSP - 1.74 GB)
+
+-> Zynq-7000 SoC Board Support Packages - <version>
+        -> Download:- ZC706 BSP (BSP - 110.74 MB)
+
+-> Common images for Embedded Vitis platforms - <version>
+        -> Download:- ZYNQMP common image (TAR/GZIP - 1.26 GB) [for zcu+ family]
+                   :- ZYNQ common image (TAR/GZIP - 886.51 MB) [for zc family]
+
+Note:- replace <version> with your requirement. Also note that size of each file may be different depends on version.
+
+--> Reference :- https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1144-petalinux-tools-reference-guide.pdf
+

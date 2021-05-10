@@ -1,0 +1,113 @@
+
+Below are few common issues might arises during installation of pre-requisites and running test cases on local board.
+
+-----------------------------------------------------------------------------
+=========================== Python Related Issues ===========================
+-----------------------------------------------------------------------------
+
+Ensure that your pip and setuptools installations are up-to-date if it is not working with current default installed one on yor machine:
+
+python3 -m pip install --upgrade pip setuptools wheel
+or
+pip3 install --upgrade setuptools
+pip3 install --upgrade wheel
+
+General way to upgrade to latest python packages :
+pip3 install --upgrade [package_name]
+
+
+-------------------------------------------------------------------------------------------------------
+=========================== Xilinx Petalinux and Vitis Tools Related Issues ===========================
+-------------------------------------------------------------------------------------------------------
+
+Always run and installed below usb drivers before connecting to boards:
+Install Cable Drivers (Linux Only)
+
+In order to install Linux cable drivers, first navigate to the following directory in a console window:
+
+<Vitis Install>/data/xicom/cable_drivers/lin64/install_script/install_drivers/
+
+“<Vitis Install>” directory is  “/home/<user_name>/tools/Xilinx/Vitis/<version>/” directory, where <version> represents the Vivado version number.
+
+From within this directory, run the “./install_drivers” command as a super-user. Once this command completes successfully, 
+the required drivers will be installed.
+Unplugged and plugged cables again in order for driver scripts to update the cables.
+
+
+Serial Comminucation with picocom:
+
+In order to use the USB drivers with a serial terminal, each user that will be using serial terminals must be added to the dialout group. 
+Serial terminals can be very useful for debugging FPGA designs that implement a USB-UART controller.
+
+The current user can be added to the dialout group with the following command:
+sudo adduser <username> dialout
+
+Alternatively, and preferably, you can add yourself to the user-group that your system has for allowing access to serial ports. 
+For most Unix-like systems this group is called "dialout".
+sudo usermod -a -G dialout <username>
+Restart or reboot Host machine is must after above command.
+
+i.e. check and Test serial port with below command:
+picocom -b 115200 /dev/ttyUSB0
+
+Once picocom starts, it initializes the serial port and prints the message:
+Terminal is ready
+
+To exit picocom you have to type:
+CTRL-a, CTRL-x
+
+Note:-
+Picocom serial session should always be closed while running the test cases through ROAST Environments. 
+
+
+----------------------------------------------------------------------------------------------------
+=========================== Running test cases with ROAST Related Issues ===========================
+----------------------------------------------------------------------------------------------------
+
+To check whether installation is done properly or not:
+pip3 list | grep roast
+or 
+pip3 list | grep [package_name]
+
+Sometime user might get specific version issue of libraries to be installed or missing few packages :
+for example, Perl issue, openssl issue etc.
+
+i.e.
+cpan -u or /usr/local/bin/cpan -u
+
+OR
+----------------------------------------------------------------------------------------------------
+complete perl installation:
+----------------------------------------------------------------------------------------------------
+Note: - whenever you get perl error, install perl with replacing version as required by xilinx tools.
+
+-wget http://www.cpan.org/src/<version>/perl-<version>.tar.gz
+
+-tar xvfz perl-<version>.tar.gz
+
+-cd perl-<version> && ./Configure -Duseithreads -des && make && make test && make install /usr/local/bin/cpan -u
+----------------------------------------------------------------------------------------------------------------
+
+
+If first test case is passed and rest of test cases are failing due to some resource issue with picocom, then add some delay 
+after exit of picocom application as it is depends upon system performance. Also power off and on required for boards. 
+https://github.com/Xilinx/roast-xilinx/blob/master/roast/component/board/target_board.py#L63
+
+i.e.
+```
+import time
+
+self.serial.exit()
+time.sleep(<number of seconds>)   # Add new line and put integer value i.e. time.sleep(3) 
+if self.invoke_xsdb:
+```
+
+Alternatively, and preferably of USB Relay option (i.e reconnect, disconnect, connect) from ROAST Framework:
+https://github.com/Xilinx/roast-xilinx/blob/master/roast/component/usbrelay.py
+
+USB Relay Installation Instructions:
+To make relay work
+Downlaod https://confluence.xilinx.com/download/attachments/118478361/usb_relay?version=1&modificationDate=1568656490910&api=v2
+copy to /usr/bin/usb_relay
+Add -> <MY_USER_NAME> ALL=(root) NOPASSWD: /usr/bin/usb_relay to /etc/sudoers
+
