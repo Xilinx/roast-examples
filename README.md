@@ -81,14 +81,14 @@ pytest -s -k "run" -vv
 
 ## Execute Test Suite
 
-### Fetch the repository roast_examples tests repo:
+### Fetch the repository roast-examples tests repo:
 
 ```bash
-#Cloning roast_examples regression to be tested
-git clone https://github.com/Xilinx/roast_examples.git
+#Cloning roast-examples regression to be tested
+git clone https://github.com/Xilinx/roast-examples.git
 
-#Go to roast_examples directory
-cd roast_examples
+#Go to roast-examples directory
+cd roast-examples
 ```
 
 ### hello_world Tests Execution
