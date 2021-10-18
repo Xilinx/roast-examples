@@ -36,6 +36,9 @@ This repo has been tested with below version along with dependent Xilinx tools/p
 In ROAST, picocom application has been used for connecting and disconnecting local board support.
 https://github.com/npat-efault/picocom
 
+User needs to be in Bash prompt while setting virtual environment and running the test cases. 
+Usable commands are bash or bash --norc. And bash prompt should be in below fomrat.
+i.e. bash-4.2$
 
 ### USING PYPI TO SETUP ROAST ENVIRONMENT:
 
